@@ -1,4 +1,0 @@
-pyyaml
-psutil
-matplotlib
-plyer
