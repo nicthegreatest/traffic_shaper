@@ -1,0 +1,49 @@
+rules:
+- name: Throttle Guest Wi-Fi
+  enabled: true
+  limit:
+    upload: 1mbit
+    download: 5mbit
+  filter:
+    ip_range: 192.168.2.0/24
+  schedule:
+    days:
+    - Mon
+    - Tue
+    - Wed
+    - Thu
+    - Fri
+    - Sat
+    - Sun
+- name: Prioritize SSH
+  enabled: true
+  limit:
+    upload: 256kbit
+    download: 256kbit
+  filter:
+    protocol: tcp
+    port: '22'
+- name: Limit Netflix during work hours
+  enabled: false
+  limit:
+    upload: 500kbit
+    download: 1mbit
+  filter:
+    application: netflix
+  schedule:
+    time_start: 09:00
+    time_end: '17:00'
+    days:
+    - Mon
+    - Tue
+    - Wed
+    - Thu
+    - Fri
+- name: Basic_Default_Rule
+  enabled: true
+  limit:
+    upload: 80000.0kbit
+    download: 80000.0kbit
+  filter:
+    ip_range: 0.0.0.0/0
+
